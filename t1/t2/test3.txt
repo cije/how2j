@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk-11.0.5\bin\java.exe" "-javaagent:D:\Program Files\JetBrains\IntelliJ IDEA 2019.3.2\lib\idea_rt.jar=10724:D:\Program Files\JetBrains\IntelliJ IDEA 2019.3.2\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\lenovo\IdeaProjects\untitled3\out\production\how2j com.io.characterstream.TestStream

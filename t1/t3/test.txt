@@ -1,0 +1,3 @@
+garen kill teemo
+teemo revive after 1 minutes
+teemo try to garen, but killed again
