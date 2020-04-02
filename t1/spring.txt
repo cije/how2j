@@ -1,2 +1,2 @@
-class=com.reflection.t1.Service1
-method=doService1
+class=com.reflection.t1.Service2
+method=doService2
