@@ -1,11 +1,12 @@
 package com.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Scanner;
 
-public class TestJDBC {
+/**
+ * SQL语句判断账号密码是否正确
+ */
+public class TestJDBC2 {
     static Connection connection = null;
     static Statement s = null;
     final static String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -14,10 +15,30 @@ public class TestJDBC {
     final static String PASSWORD = "123456";
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入用户名：");
+        String user = sc.nextLine();
+        System.out.println("请输入密码：");
+        String password = sc.nextLine();
         getConnect();
-        String sql = "delete from hero where id>100;";
-        execute(sql);
+        if (judge(user, password)) {
+            System.out.println("登陆成功！");
+        } else {
+            System.out.println("用户名或密码错误");
+        }
         closeAll();
+    }
+
+    public static boolean judge(String user, String password) {
+        String sql = "select * from user where name='" + user + "' and password='" + password + "';";
+        try {
+            // 执行查询语句，并把结果集返回给ResultSet
+            ResultSet rs = s.executeQuery(sql);
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static void getConnect() {
@@ -45,18 +66,6 @@ public class TestJDBC {
             try {
                 connection.close();
             } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void execute(String sql) {
-        if (s != null) {
-            try {
-                s.execute(sql);
-                System.out.println("执行语句成功");
-            } catch (SQLException e) {
-                System.out.println("执行语句失败");
                 e.printStackTrace();
             }
         }

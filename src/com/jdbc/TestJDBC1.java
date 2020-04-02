@@ -1,11 +1,11 @@
 package com.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-public class TestJDBC {
+/**
+ * executeQuery 执行SQL查询语句,并把结果集返回给ResultSet
+ */
+public class TestJDBC1 {
     static Connection connection = null;
     static Statement s = null;
     final static String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -15,9 +15,43 @@ public class TestJDBC {
 
     public static void main(String[] args) {
         getConnect();
-        String sql = "delete from hero where id>100;";
-        execute(sql);
+        list(5, 5);
         closeAll();
+    }
+
+    public static void select() {
+        String sql = "select *from hero";
+        executeQuery(sql);
+    }
+
+    public static void executeQuery(String sql) {
+        try {
+            // 执行查询语句，并把结果集返回给ResultSet
+            ResultSet rs = s.executeQuery(sql);
+            int id, damage;
+            float hp;
+            String name;
+            while (rs.next()) {
+                //可以使用字段名
+                id = rs.getInt("id");
+                //也可以使用字段的顺序（从1开始）
+                name = rs.getString(2);
+                hp = rs.getFloat("hp");
+                damage = rs.getInt(4);
+                System.out.println(id + "\t" + name + "\t" + hp + "\t" + damage);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @param start 开始页数
+     * @param count 一页显示的总数
+     */
+    public static void list(int start, int count) {
+        String sql = "select *from hero limit " + start + "," + count + ";";
+        executeQuery(sql);
     }
 
     public static void getConnect() {
@@ -50,6 +84,9 @@ public class TestJDBC {
         }
     }
 
+    /**
+     * 增删改
+     */
     public static void execute(String sql) {
         if (s != null) {
             try {
