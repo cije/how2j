@@ -1,0 +1,2 @@
+class=com.reflection.t1.Service1
+method=doService1
