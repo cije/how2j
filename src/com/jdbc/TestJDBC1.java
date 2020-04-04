@@ -28,6 +28,10 @@ public class TestJDBC1 {
         try {
             // 执行查询语句，并把结果集返回给ResultSet
             ResultSet rs = s.executeQuery(sql);
+//            boolean isQuery =s.execute(sql);
+//            if(isQuery){
+//                ResultSet rs=s.getResultSet();
+//            }
             int id, damage;
             float hp;
             String name;
