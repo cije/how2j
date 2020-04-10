@@ -12,7 +12,7 @@ public class TestJDBC7 {
     static Connection connection = null;
     static Statement s = null;
     final static String DRIVER = "com.mysql.cj.jdbc.Driver";
-    final static String URL = "jdbc:mysql://localhost:3306/hero?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC";
+    final static String URL = "jdbc:mysql://localhost:3306/hero?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     final static String USER = "root";
     final static String PASSWORD = "123456";
 

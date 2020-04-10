@@ -3,6 +3,9 @@ package com.jdbc;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ * 事务练习 分页查询
+ */
 public class TestJDBC8 {
     private static Connection connection = null;
     private static Statement s = null;
