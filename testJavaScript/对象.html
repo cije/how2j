@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+    <script>
+        function println(a) {
+            document.write(a);
+            document.write("<br/>");
+        }
+
+        function print(a) {
+            document.write(a);
+        }
+    </script>
+    <style type="text/css">
+        header {
+            text-align: center;
+            width: 100%;
+        }
+
+        form {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>数字对象</h3>
+<script>
+    const x = new Number(123);
+    println("数字对象x的值：" + x);
+    println("数字对象x的类型：" + typeof x); //通过typeof获知这是一个onject
+    const y = 123;
+    println("基本类型y的值：" + y);
+    println("基本类型y的类型：" + typeof y);//通过typeof或者这是一个number
+    println("Number对象的最小值：" + Number.MIN_VALUE);
+    println("Number对象的最大值：" + Number.MAX_VALUE);
+    const notanumber = new Number('123abc');
+    println("通过非数字'123abc'创建Number对象，得到的是一个" + notanumber);
+    println("正确判断是否是NaN的方式是调用isNaN函数:" + isNaN(notanumber));
+    const a = new Number("123");
+    println("数字对象123通过toFixed(2) 保留两位小数：" + a.toFixed(2));
+    println("数字对象123通过toExponential返回科学计数法表达：" + a.toExponential());
+    const b = new Number("3.1415926");
+    println("PI通过toFixed(3) 保留三位小数：" + b.toFixed(3));
+    println("PI通过toExponential 返回科学计数法表达：" + b.toExponential());
+    println('数字对象a的类型是: ' + typeof a); //返回object
+    const a1 = a.valueOf();
+    println('通过valueOf()返回的值的类型是' + typeof a1); //返回number
+    function mul() {
+        const num1 = document.getElementById("num1").value;
+        const num2 = document.getElementById("num2").value;
+        const result = (num1 * num2).toExponential();
+        document.getElementById("result").value = result;
+    }
+</script>
+<span>
+    <form>
+        <input type="text" id="num1">*
+        <input type="text" id="num2">=
+        <input type="text" id="result">
+        <input type="button" onclick="mul()" value="计算">
+        <input type="reset" value="重置">
+    </form>
+</span>
+</body>
+</html>

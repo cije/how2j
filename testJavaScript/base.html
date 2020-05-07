@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我是标题</title>
+    <script>
+        document.write("猜猜我是谁<br/>");
+    </script>
+</head>
+<body>
+<script>
+    document.write("<strong>你好ya</strong><br/>");
+</script>
+<hr/>
+<button onclick="document.getElementById('test').style.display='none'">隐藏</button>
+<button onclick="document.getElementById('test').style.display='block'">显示</button>
+<p id="test">这个是一段可以被javascript隐藏的文本</p>
+<hr/>
+<script src="基本数据类型.js"></script>
+<script src="类型转换.js"></script>
+<script src="函数.js"></script>
+<hr/>
+<script>
+    function showHello() {
+        alert("Hello");
+    }
+</script>
+<button onclick="showHello()">点我</button>
+<br/>
+<script>
+    var day = new Date().getDay();
+    var today;
+    switch (day) {
+        case 0:
+            today = "星期天";
+            break;
+        case 1:
+            today = "星期一";
+            break;
+        case 2:
+            today = "星期二";
+            break;
+        case 3:
+            today = "星期三";
+            break;
+        case 4:
+            today = "星期四";
+            break;
+        case 5:
+            today = "星期五";
+            break;
+        case 6:
+            today = "星期六";
+            break;
+    }
+    document.write("今天是 " + today);
+    document.write("<br/>");
+    for (let i = 1; i <= 9; i++) {
+        for (let j = 1; j <= i; j++) {
+            document.write(j + "*" + i + "=" + i * j + " ");
+        }
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

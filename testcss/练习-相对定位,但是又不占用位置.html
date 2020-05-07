@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习-相对定位,但是又不占用位置</title>
+    <style>
+        div.pa {
+            position: relative;
+        }
+
+        p.zi {
+            position: absolute;
+            left: 80px;
+            top: 58px;
+        }
+    </style>
+</head>
+<body>
+<div class="pa">
+    <p>正常文字1</p>
+    <p>正常文字2</p>
+    <p class="zi">相对于定义的文字3（不占坑）</p>
+    <p>正常文字4</p>
+    <p>正常文字5</p>
+</div>
+</body>
+</html>

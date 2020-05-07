@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+
+tr.head {
+    border-bottom-width: 2px;
+}
+
+tr.odd {
+    background-color: #f8f8f8;
+}
+
+tr {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: lightgray;
+    height: 35px;
+}
+
+td {
+    text-align: center;
+}
