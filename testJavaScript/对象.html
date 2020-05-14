@@ -14,12 +14,7 @@
         }
     </script>
     <style type="text/css">
-        header {
-            text-align: center;
-            width: 100%;
-        }
-
-        form {
+        form.form1 {
             width: 100%;
         }
     </style>
@@ -27,10 +22,10 @@
 <body>
 <h3>数字对象</h3>
 <script>
-    const x = new Number(123);
+    let x = new Number(123);
     println("数字对象x的值：" + x);
     println("数字对象x的类型：" + typeof x); //通过typeof获知这是一个onject
-    const y = 123;
+    let y = 123;
     println("基本类型y的值：" + y);
     println("基本类型y的类型：" + typeof y);//通过typeof或者这是一个number
     println("Number对象的最小值：" + Number.MIN_VALUE);
@@ -55,7 +50,7 @@
     }
 </script>
 <span>
-    <form>
+    <form class="form1">
         <input type="text" id="num1">*
         <input type="text" id="num2">=
         <input type="text" id="result">
@@ -63,5 +58,250 @@
         <input type="reset" value="重置">
     </form>
 </span>
+<hr/>
+<h3>字符串对象</h3>
+<script>
+    x = "s";
+    y = new String(x);
+    println("变量x的值是：" + x);
+    println("变量x的类型是：" + typeof x);
+    println("变量y的值是：" + y);
+    println("变量y的类型是：" + typeof y);
+    z = new String("Hello JavaScript");
+    println("字符串z的值：" + z);
+    println("通过.length属性获取字符串'Hello JavaScript'的长度:" + z.length);
+    println("通过charAt(0)获取位置0的字符串：" + z.charAt(0));
+    println("通过charCodeAt(0)获取位置0的字符的Unicode码：" + z.charCodeAt(0));//返回H对应的Unicode码 72
+    let z1 = new String("Hello ");
+    let z2 = new String("JavaScript");
+    println('通过函数concat()把两个字符串连接起来: ' + z1.concat(z2));
+    println("通过indexOf(\"a\")获取子字符\"a\"第一次出现的位置：" + z.indexOf("a"));
+    println("通过lastIndexOf(\"a\")获取子字符\"a\"最后出现的位置：" + z.lastIndexOf("a"));
+    println("stringObject.localeCompare(target) 比较两段字符串是否相同，如果 stringObject 小于 target，则 localeCompare() 返回小于 0 的数。如果 stringObject 大于 target，则该方法返回大于 0 的数。如果两个字符串相等，或根据本地排序规则没有区别，该方法返回 0。 ");
+    println("z1.concat(z2)和z比较:" + (z1.concat(z2)).localeCompare(z));
+    println("z.substring (0,5) 获取位0到5的字符串(左闭右开）：" + z.substring(0, 5));
+    let st = new String("Hello This Is JavaScript");
+    println("st的值：" + st);
+    var array1 = st.split(" ");
+    println("通过空格分隔split(\" \")，得到数组：" + array1);
+    var array2 = st.split(" ", 2);
+    println("通过空格分隔split(\" \",2)，得到数组，并且只保留前两个：" + array2);
+    println("replace(search,replacement) 找到满足条件的子字符串search，替换为replacement");
+    println("替换所有的a：" + z.replace(/a/g, "o"));
+    println("<strong>需要注意的是，所有返回字符串类型的方法，返回的都是基本类型的String</strong>");
+
+    function replace() {
+        const srcStr = document.getElementById("srcStr").value;
+        const search = document.getElementById("search").value;
+        const replace = document.getElementById("replace").value;
+        const regS = new RegExp(search, "g");
+        const result = srcStr.replace(regS, replace);
+        document.getElementById("resultStr").value = result;
+    }
+</script>
+<h4>字符串替换工具</h4>
+<table>
+    <tr>
+        <td>
+            源字符串：
+        </td>
+        <td>
+            <input type="text" id="srcStr">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            查询：
+        </td>
+        <td>
+            <input type="text" id="search">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            替换为：
+        </td>
+        <td>
+            <input type="text" id="replace">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            替换结果：
+        </td>
+        <td>
+            <input type="text" id="resultStr">
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button onclick="replace()">替换</button>
+        </td>
+    </tr>
+</table>
+<hr/>
+<h3>数组</h3>
+<p>javascript中的数组是动态的，即长度是可以发生变化的。</p>
+<script>
+    var array = new Array(); //创建长度为0的数组
+    // var ay1 = []; //创建长度为0的数组
+    println("通过new Array()创建一个空数组：" + array);
+    array = new Array(5);//创建长度是5的数组，但是其中每一个元素都是undefine
+    println("通过new Array(5)创建一个长度是5的数组：" + array);
+    array = new Array(3, 1, 4, 1, 5, 9, 2, 6); //根据参数创建数组
+    // array=[3,1,4,1,5,9,2,6]; //根据参数创建数组
+    println("创建有初值的数组：" + array);
+    println("数组的长度array.length为：" + array.length);
+    println("遍历数组：");
+    for (i in array) {
+        print(array[i] + " ");
+    }
+    print("<br/>");
+    for (const t of array) {
+        print(t + " ");
+    }
+    print("<br/>");
+    println("使用concat连接两个数组：");
+    var at1 = [3, 1, 2], at2 = [4, 9, 5, 3];
+    println("连接[3,1,2]和[4,9,5,3]：" + at1.concat(at2));
+    println("方法 join 通过指定分隔符，返回一个数组的字符串表达，默认为\",\"");
+    println("默认.join()：" + array.join());
+    println("自定义分隔符@：" + array.join("@"));
+    println("push() ：向数组末尾插入数据");
+    println("pop() ：获取数组末尾的数据（获取后删除）");
+    array.push(555);
+    println("向数组末尾插入555后：" + array);
+    let e = array.pop();
+    println("从数组末尾取出一个值为：" + e + " 之后数组为：" + array);
+    println("unshift() ：向数组开头插入数据");
+    println("shift() ：获取数组开头的数据（获取后删除）");
+    array.unshift(5);
+    println('对数组 unshift 值5(在最前面加)，数组变为:' + array);
+    e = array.shift();
+    println('从数组中 shift 一个数(从最前面取)，其值是:' + e + ' shift之后，数组变为:' + array);
+    println("使用sort对数组进行排序（默认升序）：" + array.sort());
+    println("使用sort对数组进行排序（自定义降序）：" + array.sort((v1, v2) => v2 - v1));
+
+    function quchongsort(arr) {
+        var result = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            if (-1 == result.indexOf(arr[i])) {
+                result.push(arr[i]);
+            }
+        }
+        return result.sort();
+    }
+
+    println("去重排序:" + quchongsort(array));
+    println("使用reverse反转数组：" + array.reverse());
+    println("使用slice获取子数组（左闭右开）array.slice(1,3)：" + array.slice(1, 3));
+    array.splice(3, 2);
+    println("array.splice (3,2) 表示从位置3开始 ，删除2个元素:" + array);
+    array.splice(3, 0, 1, 5);
+    println("array.splice(3,0,1,5) 从位置3开始，删除0个元素，但是插入1和5,最后得到:" + array);
+
+    //按照字母排序
+    function sortStr1() {
+        const str = document.getElementById("string").value;
+        const arr = str.split("");
+        arr.sort();
+        document.getElementById("ZhengStr").value = arr.join("");
+        document.getElementById("NiStr").value = arr.reverse().join("");
+    }
+
+    //按照单词排序
+    function sortStr2() {
+        const str = document.getElementById("string").value;
+        const arr = str.split(" ");
+        arr.sort();
+        document.getElementById("ZhengStr").value = arr.join(" ");
+        arr.sort((v1, v2) => v2.localeCompare(v1));
+        document.getElementById("NiStr").value = arr.join(" ");
+    }
+</script>
+<p>字符串替换功能</p>
+<table>
+    <tr>
+        <td>随机输入英文字符串：</td>
+        <td><input type="text" id="string" value="what a great day"></td>
+    </tr>
+    <tr>
+        <td> 正排序结果：</td>
+        <td><input type="text" id="ZhengStr"></td>
+    </tr>
+    <tr>
+        <td> 逆排序结果排序结果：</td>
+        <td><input type="text" id="NiStr"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="button" value="按照字母排序" onclick="sortStr1()"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="button" value="按照单词排序" onclick="sortStr2()"></td>
+    </tr>
+</table>
+<hr>
+<h3>日期</h3>
+<script>
+    println("通过new Date创建一个日期对象，这个对象就表示当前日期(现在)");
+    var d = new Date();
+    println("new Date(): " + d);
+    println("获取年：" + d.getFullYear());
+    println("获取月（从0开始）：" + d.getMonth());
+    println("获取日：" + d.getDate());
+    println("获取时：" + d.getHours());
+    println("获取分：" + d.getMinutes());
+    println("获取秒：" + d.getSeconds());
+    println("获取毫秒：" + d.getMilliseconds());
+    var weeks = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    println("获取星期几(从0开始）：" + weeks[d.getDay()]);
+    println("从1970/1/1 08:00:00 到今天的毫秒数: " + d.getTime());
+    println("修改日期：");
+    d.setFullYear(2050);
+    d.setMonth(4);//4表示5月
+    d.setDate(20);
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    println(d);
+
+    function calAge() {
+        var now = new Date();
+        var date = document.getElementById("date").value;
+        var birth = date.split('-');
+        var year1 = now.getFullYear(), month1 = now.getMonth(), day1 = now.getDate();
+        var year2 = birth[0], month2 = birth[1], day2 = birth[2];
+        var result = year1 - year2;
+        if (month1 < month2) {
+            if (day1 < day2) {
+                result--;
+            }
+        }
+        document.getElementById("age").innerHTML = "您今年" + result + "岁";
+    }
+</script>
+<p>计算年龄</p>
+<p>请输入出生年月日</p>
+<form>
+    出生日期<input type="date" id="date">
+    <input type="button" value="计算年龄" onclick="calAge()"><br/>
+    <span id="age"></span>
+</form>
+<hr/>
+<h3>Math对象</h3>
+<script>
+    println("e = " + Math.E);
+    println("PI = " + Math.PI);
+    println("-1的绝对值：" + Math.abs(-1));
+    println("(1,100)最大值：" + Math.max(1, 100));
+    println("(1,100)最小值：" + Math.min(1, 100));
+    println("2的立方：" + Math.pow(2, 3));
+    println("对PI四舍五入取整：" + Math.round(Math.PI));
+    println("一个 0-1 之间的随机数：Math.random() :" + Math.random())
+    println("5-10之间的随机数：Math.round(Math.random()*5)+5：" + Math.round(Math.random() * 5) + 5);
+</script>
 </body>
 </html>
